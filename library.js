@@ -15,10 +15,10 @@ function addBookToLibrary(Book) {
 }
 
 function addToTable(titleAndAuthor, pageCount, status){
-    var row = libraryTable.insertRow(0);
-    var titleCell = row.insertCell(0);
-    var pageCell = row.insertCell(1);
-    var statusCell = row.insertCell(2);
+    var row = libraryTable.insertRow();
+    var titleCell = row.insertCell();
+    var pageCell = row.insertCell();
+    var statusCell = row.insertCell();
     titleCell.innerHTML = titleAndAuthor;
     pageCell.innerHTML = pageCount;
     statusCell.innerHTML = status;
