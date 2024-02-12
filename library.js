@@ -20,14 +20,19 @@ function addBookToTable(titleAndAuthor, pageCount, status, index){
     var titleCell = row.insertCell();
     var pageCell = row.insertCell();
     var statusCell = row.insertCell();
+    var actionCell = row.insertCell();
     var deleteButton = document.createElement('button');
-    row.appendChild(deleteButton);
+    actionCell.appendChild(deleteButton);
+    var readButton = document.createElement('button');
+    actionCell.appendChild(readButton);
     titleCell.innerHTML = titleAndAuthor;
     pageCell.innerHTML = pageCount;
     statusCell.innerHTML = status;
     deleteButton.innerHTML = 'delete';
     deleteButton.setAttribute('data-book-index', index);
     deleteButton.addEventListener('click', function(){deleteBook(index)})
+    readButton.innerHTML = 'read';
+    readButton.setAttribute('data-book-index', index);
 }
 
 // Delete a book by passing the data-book-index
@@ -82,6 +87,7 @@ function addNewBookOnPage(event) {
     console.table(libraryArray);
 }
 
+// Show modal form, enable adding new books
 function showBookForm() {
     document.getElementById('formModal').showModal();
 }
