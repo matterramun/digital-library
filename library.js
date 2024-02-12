@@ -35,16 +35,21 @@ function deleteBook(bookIndex){
     console.log("delete " + bookIndex)
     libraryArray.splice(bookIndex,1)
     console.table(libraryArray)
+    addLibraryToTable(libraryArray)
 }
 
 // Adds all test books to the HTML Table via addToTable funct.
-// TODO: refactor to delete all books, and update with full library
 function addLibraryToTable(library){
+    while (libraryTableBody.lastChild !== null) {
+        libraryTableBody.removeChild(libraryTableBody.lastChild)
+    }
+
     if (libraryArray.length === 0){
         addBookToLibrary(new Book('Test Book 1', '200 pages', 'not read'));
         addBookToLibrary(new Book('Test Book 2', '250 pages', 'read'));
         addBookToLibrary(new Book('The Hobbit by J.R.R. Tolkien', '295 pages', 'not read yet'));
     } 
+
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
         addBookToTable(book.titleAndAuthor, book.pageCount, book.status, i);
