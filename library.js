@@ -38,7 +38,7 @@ function deleteBook(bookIndex){
     addLibraryToTable(libraryArray)
 }
 
-// Adds all test books to the HTML Table via addToTable funct.
+// Adds all books to the HTML Table via addBookToTable funct.
 function addLibraryToTable(library){
     while (libraryTableBody.lastChild !== null) {
         libraryTableBody.removeChild(libraryTableBody.lastChild)
@@ -60,14 +60,12 @@ function addLibraryToTable(library){
 function addTestRows() {
     addBookToTable('test','test','test');
     addBookToLibrary(new Book('test', 'test', 'test'))
-    console.table(libraryArray)
 }
 
 document.getElementById("test").addEventListener('click', addTestRows );
 
 // library declaration and test book
 let libraryArray = [];
-// console.log(theHobbit.info());
 
 // Test books
 addLibraryToTable(libraryArray);
