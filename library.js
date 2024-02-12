@@ -8,14 +8,14 @@ function Book(titleAndAuthor, pageCount, status) {
     };
 }
 
-const libraryTable = document.getElementById("library");
+const libraryTableBody = document.getElementById("tableBody");
 
 function addBookToLibrary(Book) {
     library.push(Book)
 }
 
 function addToTable(titleAndAuthor, pageCount, status){
-    var row = libraryTable.insertRow();
+    var row = libraryTableBody.insertRow();
     var titleCell = row.insertCell();
     var pageCell = row.insertCell();
     var statusCell = row.insertCell();
@@ -27,7 +27,7 @@ function addToTable(titleAndAuthor, pageCount, status){
 function addTestBooks(library){
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
-        addToTable(book[0], book[1], book[2]);
+        addToTable(book.titleAndAuthor, book.pageCount, book.status);
     }
 }
 
