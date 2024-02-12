@@ -35,11 +35,11 @@ function deleteBook(bookIndex){
     console.log("delete " + bookIndex)
     libraryArray.splice(bookIndex,1)
     console.table(libraryArray)
-    addLibraryToTable(libraryArray)
+    addLibraryToTable()
 }
 
 // Adds all books to the HTML Table via addBookToTable funct.
-function addLibraryToTable(library){
+function addLibraryToTable(library = libraryArray){
     while (libraryTableBody.lastChild !== null) {
         libraryTableBody.removeChild(libraryTableBody.lastChild)
     }
@@ -68,17 +68,18 @@ document.getElementById("test").addEventListener('click', addTestRows );
 let libraryArray = [];
 
 // Test books
-addLibraryToTable(libraryArray);
+addLibraryToTable();
 console.table(libraryArray);
 
 //Adding a new book to table and library
 function addNewBookOnPage(event) {
     event.preventDefault();
     const form = document.getElementById('bookForm')
-    console.log(form)
-    new Book(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
-    addBookToTable(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
+    const newBook = new Book(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
+    addBookToLibrary(newBook)
+    addLibraryToTable()
     document.getElementById('formModal').close()
+    console.table(libraryArray);
 }
 
 function showBookForm() {
