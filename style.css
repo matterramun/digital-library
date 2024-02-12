@@ -43,6 +43,7 @@ table {
 	border-spacing: 0;
 }
 
+/* End CSS Reset */
 
 h1 {
     font-family: sans-serif;
@@ -110,4 +111,8 @@ button {
 
 button:hover {
     background-color: #007a68;
+}
+
+div {
+    margin: 10px;
 }
