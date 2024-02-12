@@ -14,6 +14,7 @@ function addBookToLibrary(Book) {
     libraryArray.push(Book)
 }
 
+// Adds books to table using parameters passed as params
 function addToTable(titleAndAuthor, pageCount, status){
     var row = libraryTableBody.insertRow();
     var titleCell = row.insertCell();
@@ -24,6 +25,7 @@ function addToTable(titleAndAuthor, pageCount, status){
     statusCell.innerHTML = status;
 }
 
+// Adds all test books to the HTML Table via addToTable funct.
 function addTestBooksToTable(library){
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
@@ -48,4 +50,21 @@ addBookToLibrary(theHobbit);
 //addBookToLibrary(theHobbit); //this is done as part of the library add
 addTestBooksToTable(libraryArray);
 console.table(libraryArray);
+
+//Adding a new book to table and library
+function addNewBookOnPage(event) {
+    event.preventDefault();
+    const form = document.getElementById('bookForm')
+    console.log(form)
+    new Book(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
+    addToTable(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
+    document.getElementById('formModal').close()
+}
+
+function showBookForm() {
+    document.getElementById('formModal').showModal();
+}
+
+document.getElementById('newBook').addEventListener('click', showBookForm )
+document.getElementById('submitNewBook').addEventListener('click', addNewBookOnPage )
 });
