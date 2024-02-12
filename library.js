@@ -32,7 +32,15 @@ function addTestBooks(library){
 }
 
 // HTML modifiers
-document.getElementById("test").addEventListener('click', function(){addToTable('test','test','test');});
+// document.getElementById("test").addEventListener('click', function(){addToTable('test','test','test');});
+
+function addTestRows() {
+    addToTable('test','test','test');
+}
+
+document.getElementById("test").addEventListener('click', addTestRows );
+
+
 
 // library declaration and test book
 const theHobbit = new Book('The Hobbit by J.R.R. Tolkien', '295 pages', 'not read yet');
