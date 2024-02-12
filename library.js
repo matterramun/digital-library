@@ -16,23 +16,31 @@ function addBookToLibrary(Book) {
 
 // Adds books to table using parameters passed as params
 function addBookToTable(titleAndAuthor, pageCount, status, index){
+    // Add a new row for the new book
     var row = libraryTableBody.insertRow();
+
+    // Add book details to table
     var titleCell = row.insertCell();
     var pageCell = row.insertCell();
     var statusCell = row.insertCell();
     var actionCell = row.insertCell();
-    var deleteButton = document.createElement('button');
-    actionCell.appendChild(deleteButton);
-    var readButton = document.createElement('button');
-    actionCell.appendChild(readButton);
     titleCell.innerHTML = titleAndAuthor;
     pageCell.innerHTML = pageCount;
     statusCell.innerHTML = status;
+
+    // Add a delete button with a listener to delete a book
+    var deleteButton = document.createElement('button');
+    actionCell.appendChild(deleteButton);
     deleteButton.innerHTML = 'delete';
     deleteButton.setAttribute('data-book-index', index);
     deleteButton.addEventListener('click', function(){deleteBook(index)})
+
+    // Add a read button to toggle read status
+    var readButton = document.createElement('button');
+    actionCell.appendChild(readButton);
     readButton.innerHTML = 'read';
     readButton.setAttribute('data-book-index', index);
+    readButton.addEventListener('click', function(){toggleStatus(index)})
 }
 
 // Delete a book by passing the data-book-index
@@ -41,6 +49,17 @@ function deleteBook(bookIndex){
     libraryArray.splice(bookIndex,1)
     console.table(libraryArray)
     addLibraryToTable()
+}
+
+// Toggles index by changing library and regenerating table
+function toggleStatus(bookIndex){
+    if (libraryArray[bookIndex].status.toUpperCase() == "READ" ) {
+        libraryArray[bookIndex].status = "Not Read"
+    } else {
+        libraryArray[bookIndex].status = "Read"
+    }
+    addLibraryToTable();
+    console.log(libraryArray[bookIndex])
 }
 
 // Adds all books to the HTML Table via addBookToTable funct.
