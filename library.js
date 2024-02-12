@@ -15,7 +15,7 @@ function addBookToLibrary(Book) {
 }
 
 // Adds books to table using parameters passed as params
-function addToTable(titleAndAuthor, pageCount, status, index){
+function addBookToTable(titleAndAuthor, pageCount, status, index){
     var row = libraryTableBody.insertRow();
     var titleCell = row.insertCell();
     var pageCell = row.insertCell();
@@ -32,21 +32,25 @@ function addToTable(titleAndAuthor, pageCount, status, index){
 
 // Delete a book by passing the data-book-index
 function deleteBook(bookIndex){
-
+    console.log("delete " + bookIndex)
+    libraryArray.splice(bookIndex,1)
+    console.table(libraryArray)
 }
 
 // Adds all test books to the HTML Table via addToTable funct.
 // TODO: refactor to delete all books, and update with full library
-function addBooksToTable(library){
+function addLibraryToTable(library){
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
-        addToTable(book.titleAndAuthor, book.pageCount, book.status, i);
+        addBookToTable(book.titleAndAuthor, book.pageCount, book.status, i);
     }
 }
 
 // Add test rows to table with test button
 function addTestRows() {
-    addToTable('test','test','test');
+    addBookToTable('test','test','test');
+    addBookToLibrary(new Book('test', 'test', 'test'))
+    console.table(libraryArray)
 }
 
 document.getElementById("test").addEventListener('click', addTestRows );
@@ -59,7 +63,7 @@ addBookToLibrary(theHobbit);
 
 // Test books
 //addBookToLibrary(theHobbit); //this is done as part of the library add
-addBooksToTable(libraryArray);
+addLibraryToTable(libraryArray);
 console.table(libraryArray);
 
 //Adding a new book to table and library
@@ -68,7 +72,7 @@ function addNewBookOnPage(event) {
     const form = document.getElementById('bookForm')
     console.log(form)
     new Book(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
-    addToTable(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
+    addBookToTable(form.titleAndAuthor.value, form.pageCount.value, form.haveRead.value)
     document.getElementById('formModal').close()
 }
 
