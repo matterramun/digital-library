@@ -106,6 +106,11 @@ function addNewBookOnPage(event) {
     console.table(libraryArray);
 }
 
+function cancelNewBook(event) {
+    event.preventDefault();
+    document.getElementById('formModal').close()
+}
+
 // Show modal form, enable adding new books
 function showBookForm() {
     document.getElementById('formModal').showModal();
@@ -113,4 +118,5 @@ function showBookForm() {
 
 document.getElementById('newBook').addEventListener('click', showBookForm )
 document.getElementById('submitNewBook').addEventListener('click', addNewBookOnPage )
+document.getElementById('cancel').addEventListener('click', cancelNewBook )
 });
