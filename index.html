@@ -23,9 +23,20 @@
     <button id="newBook">Add a new book!</button>
     <dialog id="formModal">
         <h3>Add a new Book!</h3>
-        <form action="" method="dialogue">
-            
-            <button>Submit</button>
+        <form action="" method="dialogue" id="bookForm">
+            <div class="bookForm">
+                <label for="titleAndAuthor">Title & Author</label>
+                <input type="text" name="titleAndAuthor" id="titleAndAuthor">
+            </div>
+            <div class="bookForm">
+                <label for="pageCount">Page Count</label>
+                <input type="text" name="pageCount" id="pageCount">
+            </div>
+            <div class="bookForm">
+                <label for="haveRead">Have you read this?</label>
+                <input type="text" name="haveRead" id="haveRead">
+            </div>
+            <button id="submitNewBook">Submit</button>
             <button value="cancel">Cancel</button>
         </form>
     </dialog>
