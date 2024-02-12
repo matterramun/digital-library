@@ -31,12 +31,16 @@ function addTestBooks(library){
     }
 }
 
-let library = [];
+// HTML modifiers
+document.getElementById("test").addEventListener("click",addToTable('test','test','test'));
+
+// library declaration and test book
 const theHobbit = new Book('The Hobbit by J.R.R. Tolkien', '295 pages', 'not read yet');
+let library = [theHobbit];
 // console.log(theHobbit.info());
-addBookToLibrary(theHobbit);
+
+// Test books
+//addBookToLibrary(theHobbit);
 console.table(library);
-
-
 addTestBooks(library);
 });
