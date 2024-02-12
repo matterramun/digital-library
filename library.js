@@ -15,21 +15,32 @@ function addBookToLibrary(Book) {
 }
 
 // Adds books to table using parameters passed as params
-function addToTable(titleAndAuthor, pageCount, status){
+function addToTable(titleAndAuthor, pageCount, status, index){
     var row = libraryTableBody.insertRow();
     var titleCell = row.insertCell();
     var pageCell = row.insertCell();
     var statusCell = row.insertCell();
+    var deleteButton = document.createElement('button');
+    row.appendChild(deleteButton);
     titleCell.innerHTML = titleAndAuthor;
     pageCell.innerHTML = pageCount;
     statusCell.innerHTML = status;
+    deleteButton.innerHTML = 'delete';
+    deleteButton.setAttribute('data-book-index', index);
+    deleteButton.addEventListener('click', function(){deleteBook(index)})
+}
+
+// Delete a book by passing the data-book-index
+function deleteBook(bookIndex){
+
 }
 
 // Adds all test books to the HTML Table via addToTable funct.
-function addTestBooksToTable(library){
+// TODO: refactor to delete all books, and update with full library
+function addBooksToTable(library){
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
-        addToTable(book.titleAndAuthor, book.pageCount, book.status);
+        addToTable(book.titleAndAuthor, book.pageCount, book.status, i);
     }
 }
 
@@ -48,7 +59,7 @@ addBookToLibrary(theHobbit);
 
 // Test books
 //addBookToLibrary(theHobbit); //this is done as part of the library add
-addTestBooksToTable(libraryArray);
+addBooksToTable(libraryArray);
 console.table(libraryArray);
 
 //Adding a new book to table and library
