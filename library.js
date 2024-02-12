@@ -11,7 +11,7 @@ function Book(titleAndAuthor, pageCount, status) {
 const libraryTableBody = document.getElementById("tableBody");
 
 function addBookToLibrary(Book) {
-    library.push(Book)
+    libraryArray.push(Book)
 }
 
 function addToTable(titleAndAuthor, pageCount, status){
@@ -24,31 +24,28 @@ function addToTable(titleAndAuthor, pageCount, status){
     statusCell.innerHTML = status;
 }
 
-function addTestBooks(library){
+function addTestBooksToTable(library){
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
         addToTable(book.titleAndAuthor, book.pageCount, book.status);
     }
 }
 
-// HTML modifiers
-// document.getElementById("test").addEventListener('click', function(){addToTable('test','test','test');});
-
+// Add test rows to table with test button
 function addTestRows() {
     addToTable('test','test','test');
 }
 
 document.getElementById("test").addEventListener('click', addTestRows );
 
-
-
 // library declaration and test book
 const theHobbit = new Book('The Hobbit by J.R.R. Tolkien', '295 pages', 'not read yet');
-let library = [theHobbit];
+let libraryArray = [];
+addBookToLibrary(theHobbit);
 // console.log(theHobbit.info());
 
 // Test books
-//addBookToLibrary(theHobbit);
-console.table(library);
-addTestBooks(library);
+//addBookToLibrary(theHobbit); //this is done as part of the library add
+addTestBooksToTable(libraryArray);
+console.table(libraryArray);
 });
