@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
 function Book(titleAndAuthor, pageCount, status) {
     this.titleAndAuthor = titleAndAuthor;
     this.pageCount = pageCount;
@@ -119,4 +118,3 @@ function showBookForm() {
 document.getElementById('newBook').addEventListener('click', showBookForm )
 document.getElementById('submitNewBook').addEventListener('click', addNewBookOnPage )
 document.getElementById('cancel').addEventListener('click', cancelNewBook )
-});
