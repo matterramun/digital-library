@@ -81,8 +81,9 @@ function addLibraryToTable(library = libraryArray){
 
 // Add test rows to table with test button
 function addTestRows() {
-    addBookToTable('test','test','test');
-    addBookToLibrary(new Book('test', 'test', 'test'))
+    const testBook = new Book('test','test','test')
+    addBookToLibrary(testBook);
+    addLibraryToTable()
 }
 
 document.getElementById("test").addEventListener('click', addTestRows );
